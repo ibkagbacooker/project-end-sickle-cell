@@ -1,0 +1,112 @@
+{% extends "admin/navbar.html" %}
+{%block content%}
+<section>
+    <!-- table and search -->
+    <div class="row">
+      <form action="/admin/search"  method="POST">
+        <div class="col-12 col-md-6">
+          <input type="hidden" name="search_form" value="search">
+          <input type="hidden" name="csrf_token" id="csrf_token" value="{{csrf_token()}}">
+          <div class="input-group mb-3">
+            <input type="text" name='search' class="form-control" placeholder="Search by name..." aria-label="search" aria-describedby="basic-addon2" id="search">
+            <span class="input-group-text bg-dark"  ><button class="btn btn-dark search_btn" id="search_btn"><i class="fa-solid fa-magnifying-glass"></i></span></button></span>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    
+    <!-- flash
+    {%with messages = get_flashed_messages(with_categories=true)%}
+    {%if messages%} 
+    {%for category,message in messages%}
+    <div class="row my-2">
+        <div class="col-6">
+          {%if category=='error' %}
+          <div class="flash alert alert-danger">{{message}}</div>
+          {%elif category=='success'%} 
+          <div class="flash alert alert-success">{{message}}</div>
+          {%endif%}
+        </div>        
+    {%endfor%}
+    {%endif%}
+    {%endwith%} -->
+    {%if not payment_deets%}
+    <div class="row mt-3">
+      <div class="col-12">
+        <div class="flash alert alert-success">No Payments Made yet</div>
+      </div>
+    </div>
+    {%endif%}  
+    
+    <div class="row mt-3 table-responsive">
+      <div class="col-12">
+        <table class="table table-light" id="main_tb">
+          <thead>
+            <tr class="table-dark">
+              <th scope="col">S/N</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone Number</th>
+              <th scope="col">Amount Paid</th>
+              <th scope="col">Date Paid</th>
+              
+             
+              
+              
+            </tr>
+          </thead>
+          <tbody>
+           {%if payment_deets%}
+           {%for payment in payment_deets%}
+            <tr>
+              
+              <!-- <th scope="row"></th> -->
+              <td>{{loop.index}}</td>
+              <td>{{payment.customer_fname}}</td>
+              <td>{{payment.customer_lname}}</td>
+              <td>{{payment.customer_email}}</td>
+              <td>{{payment.customer_phone}}</td>
+              <td>{{payment.customer_amount}}</td>
+              {%if payment.customer_payment_date %}
+              <td>{{payment.customer_payment_date.strftime('%B %d, %Y by %I:%M%p')}}</td>
+               {%endif%} 
+               {%if not payment.customer_payment_date %}
+               <td>nill</td>
+                {%endif%} 
+              
+            </tr>
+            {%endfor%}
+            
+            <tfoot class="table-dark">
+              <tr>
+                  <th scope="row">Total</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  
+                  <td>₦ {{total_amount}}</td>
+                  <td></td>
+              </tr>
+          </tfoot>
+          {%endif%}
+          </tbody>
+        </table>  
+      </div>
+    </div>
+   
+    
+
+    
+
+    
+
+    
+
+
+    
+    
+  </section> 
+{%endblock%}

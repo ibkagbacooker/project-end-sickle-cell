@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+      <!--jquery  -->
+        <script type="text/javascript" src="{{url_for('static', filename='js/jquery.js')}}"></script>  
+        <title>Project end sickle cell</title>
+        
+        
+
+        <!--Define character set-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Project end sickle cell">
+        <meta name="keywords" content=" Ngo, charity, nysc, lagos">
+        <meta name="author" content="ibkagbacookist">
+        
+            
+        <!--link google fonts-->
+            
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+        <!--fontawesome-->
+            <script src="https://kit.fontawesome.com/2b7f765909.js" crossorigin="anonymous"></script>
+            
+        <!--favicon-->
+        <link rel="icon" href="{{url_for('static', filename='images/healthcare4.png')}}" type="image/x-icon">
+            
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- scroll reveal -->
+        <script src="https://unpkg.com/scrollreveal"></script>
+             
+         
+           
+
+        <!--css-->
+            <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}" type="text/css">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+          
+        <style>
+
+
+        .mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity (last value) to control the darkness of the mask */
+        }
+
+        .text-center1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    padding: 0 20px; /* Add padding to prevent text from sticking to edges */
+}
+
+    .font-dm{
+        font-family: 'DM Sans', sans-serif;
+
+    }
+
+    .section_margin{
+        margin-top: 100px;
+    }
+
+    .text-color-gray{
+        color:#5e5e5e
+    }
+
+    .text-color-dark-red{
+        color: #b91c1c
+    }
+
+    .error_border{
+    box-shadow:  0 0 0 1px red;
+    border-radius: 3px;
+}
+
+
+
+    @media (min-width: 768px) { /* This targets medium-sized screens and up */
+  .custom-div {
+    
+   
+    margin: auto;
+    height: 400px; /* Set the height in pixels */
+    width:700px;
+   
+    
+  }
+}
+.custom-bg {
+    background-color: #f9fbfc; /* Replace with your desired color code */
+   
+  }
+
+.hidden{
+    display: hidden;
+}
+    </style>
+           
+    </head>
+    <body>
+
+      <nav class="navbar  navbar-expand-md navbar-dark fixed-top " style="background-color: #121212;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/"><img src="{{url_for('static', filename='images/healthcare_boot.png')}}" height="45"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ms-auto me-3 mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/#about us">About</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link " href='/#contact us' aria-disabled="true">Contact Us </a>
+              </li>
+            </ul>
+            
+             
+              <!-- <button class="btn btn-outline-danger btn-hover" type="submit">Donate</button> -->
+              
+            
+          </div>
+        </div>
+      </nav>
+
+
+          <!-- background img -->
+        <div class="row banner">
+            <div class="bg-image p-5  mb-5 text-white" 
+            style="background-image: url('../../static/images/nysc1.jpg');
+                position: relative;
+                height: 100vh;
+                background-size: cover;
+                background-position: center center;
+                margin-bottom: 50px;">
+
+                <div class="mask"></div>
+                <div class="text-center1 ">
+                <h1 class="display-4 fw-bold">Oops! seems we can't reach our servers right now.</h1>
+                <p class="lead">Not to worry, Everything is ay-okay. Please try again later.</p>
+                
+                </div>
+
+
+            </div>
+        </div>
+
+    </body>
+
+</html>

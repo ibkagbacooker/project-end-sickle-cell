@@ -1,0 +1,97 @@
+{% extends "admin/navbar.html" %}
+{%block content%}
+<section>
+    <!-- table and search -->
+    <div class="row">
+      <form action="/admin/search"  method="POST">
+        <div class="col-12 col-md-6">
+          <input type="hidden" name="search_form" value="search">
+          <input type="hidden" name="csrf_token" id="csrf_token" value="{{csrf_token()}}">
+          <div class="input-group mb-3 d-flex">
+            <input type="text" name='search' class="form-control" placeholder="Search by name..." aria-label="search" aria-describedby="basic-addon2" id="search">
+            <span class="input-group-text bg-dark"  ><button class="btn btn-dark search_btn" id="search_btn"><i class="fa-solid fa-magnifying-glass"></i></span></button></span>
+            <span class ='mx-4 my-3 cancel'><a style="text-decoration: none;color: #000000"; href="/admin/payments"><i class="fa-solid fa-circle-xmark fa-2xl"></i></a></span>
+          </div>
+          
+        </div>
+      </form>
+      
+    </div>
+
+
+    
+    {%with messages = get_flashed_messages(with_categories=true)%}
+    {%if messages%} 
+    {%for category,message in messages%}
+    <div class="row my-2">
+        <div class="col-6">
+          {%if category=='error' %}
+          <div class="flash alert alert-danger">{{message}}</div>
+          {%elif category=='success'%} 
+          <div class="flash alert alert-success">{{message}}</div>
+          {%endif%}
+        </div>        
+    {%endfor%}
+    {%endif%}
+    {%endwith%}
+
+
+    <div class="row mt-3">
+      <div class="col-12 table-responsive">
+        <table class="table table-light" id="main_tb">
+          <thead>
+            <tr class="table-dark">
+              <th scope="col">S/N</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone Number</th>
+              <th scope="col">Amount Paid</th>
+              <th scope="col">Date Paid</th>
+              
+             
+              
+              
+            </tr>
+          </thead>
+          <tbody>
+           {%if searched_customer%}
+           {%for customer in searched_customer%}
+            <tr>
+              
+              <!-- <th scope="row"></th> -->
+              <td>{{loop.index}}</td>
+              <td>{{customer.customer_fname}}</td>
+              <td>{{customer.customer_lname}}</td>
+              <td>{{customer.customer_email}}</td>
+              <td>{{customer.customer_phone}}</td>
+              <td>{{customer.customer_amount}}</td>
+              {%if customer.customer_payment_date %}
+              <td>{{customer.customer_payment_date.strftime('%B %d, %Y by %I:%M%p')}}</td>
+               {%endif%} 
+               {%if not customer.customer_payment_date %}
+               <td>nill</td>
+                {%endif%} 
+              
+            </tr>
+            {%endfor%}
+            
+           
+          {%endif%}
+          </tbody>
+        </table>  
+      </div>
+    </div>
+    
+
+    <div class="row">
+      <div class="col" id="pagination">
+        {%if searched_customer|count==1%}
+        <p style="color:grey;">Showing 1 out of 1 Donor</p>
+        {%else%}
+        <p style="color:grey;">Showing {{searched_customer|count}} out of {{searched_customer|count}} Donors</p>
+        {%endif%}
+      </div>
+
+  </section> 
+{%endblock%}
